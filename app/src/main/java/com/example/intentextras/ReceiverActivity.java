@@ -12,6 +12,8 @@ import android.widget.TextView;
 public class ReceiverActivity extends AppCompatActivity{
   TextView tvName;
   TextView tvAge;
+  String name;
+  String age;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +23,14 @@ public class ReceiverActivity extends AppCompatActivity{
         setSupportActionBar(toolbar);
         tvName = findViewById(R.id.tvName);
         tvAge = findViewById((R.id.tvAge));
+
+        Bundle extras = getIntent().getExtras();
+        if (extras!=null){
+            String name = extras.getString("etName");
+            String age = extras.getString("etAge");
+            tvName.setText(name);
+            tvAge.setText(age);
+        }
 
 
 

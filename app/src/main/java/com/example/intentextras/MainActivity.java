@@ -24,13 +24,20 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        etAge = (EditText) findViewById(R.id.name);
-        etName = (EditText) findViewById(R.id.age);
-        btnSend=(Button) findViewById(R.id.button);
+
+        btnSend=findViewById(R.id.button);
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                etAge =findViewById(R.id.etName);
+                etName =findViewById(R.id.etAge);
+
                 Intent intent = new Intent(getBaseContext(),ReceiverActivity.class);
+                String name=etName.getText().toString();
+                String age=etAge.getText().toString();
+                intent.putExtra("etName",name);
+                intent.putExtra("etAge",age);
+                startActivity(intent);
             }
         });
 
